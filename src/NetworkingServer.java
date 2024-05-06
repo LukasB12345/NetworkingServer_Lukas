@@ -34,8 +34,13 @@ public class NetworkingServer {
                 client = server.accept();
 
                 System.out.println("Connect request is accepted...");
-                String clientHost =
+                String clientHost = client.getInetAddress().getHostAddress();
+                int clientPort = client.getPort();
+                System.out.println("Client host =  " + clientHost + "Client port = " +clientPort);
 
+                //Read data from the client
+                InputStream clientIn = client.getInputStream();
+                BufferedReader br =
             }
         }
         }
