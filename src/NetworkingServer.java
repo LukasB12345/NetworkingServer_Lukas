@@ -21,6 +21,22 @@ public class NetworkingServer {
             System.out.println("Cannot open socket." + ie);
             System.exit(1);
         }
-        System.out.println("Server");
+        System.out.println("ServerSocket is created " + server);
+
+        //Wait for the data from the client and reply
+        while(true){
+            try{
+
+                //Listens for a connection to be made to
+                //this socket and accepts it. The method blocks until
+                //a connection is made
+                System.out.println("Waiting for a connect request...");
+                client = server.accept();
+
+                System.out.println("Connect request is accepted...");
+                String clientHost =
+
+            }
+        }
         }
     }
