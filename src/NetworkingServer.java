@@ -9,7 +9,7 @@ public class NetworkingServer {
         Socket client;
 
         //Default port number we are going to use
-        int portnumber = 2005;
+        int portnumber = 8080;
         if (args.length >= 1){
             portnumber = Integer.parseInt(args[0]);
         }
@@ -40,7 +40,27 @@ public class NetworkingServer {
 
                 //Read data from the client
                 InputStream clientIn = client.getInputStream();
-                BufferedReader br =
+                BufferedReader br = new BufferedReader(new InputStreamReader(clientIn));
+                String msgFromClient = br.readLine();
+                System.out.println("Message recieved from client = "+msgFromClient);
+                //Send response to the client
+                if (msgFromClient != null && !msgFromClient.equalsIgnoreCase("bye")){
+                    OutputStream clientOut = client.getOutputStream();
+                    PrintWriter pw = new PrintWriter(clientOut, true):
+                    String ansMsg = "Hello, " + msgFromClient;
+                    pw.println(ansMsg);
+                }
+
+                //Close sockets
+                if (msgFromClient != null && msgFromClient.equalsIgnoreCase("bye")){
+                    server.close();
+
+                    client.close();
+                    break;
+                }
+            } catch (IOException ie){
+                //suitable errormessage:
+                
             }
         }
         }
