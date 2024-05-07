@@ -60,7 +60,7 @@ public class NetworkingServer {
                 }
             } catch (IOException ie){
                 //suitable errormessage:
-                
+                System.out.println("No message found");
             }
         }
         }
